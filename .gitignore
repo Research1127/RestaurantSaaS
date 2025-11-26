@@ -1,0 +1,50 @@
+## Build and publish folders
+bin/
+obj/
+out/
+Generated\ Files/
+
+## Visual Studio folder
+.vs/
+
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+
+## EF Core
+*.db
+*.sqlite
+Migrations/
+
+## Logs
+*.log
+
+## Cache
+*.cache
+*.temp
+*.tmp
+
+## OS Files
+Thumbs.db
+.DS_Store
+
+## NuGet packages
+*.nupkg
+packages/
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+## Rider
+.idea/
+
+## Publish Output
+wwwroot/
