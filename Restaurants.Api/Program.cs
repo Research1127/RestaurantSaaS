@@ -1,6 +1,5 @@
 using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
-using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +32,3 @@ app.MapControllers();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

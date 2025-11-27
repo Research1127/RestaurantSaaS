@@ -13,10 +13,11 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("RestaurantsDbConn");
-        services.AddDbContext<RestaurantsDbContext>(options => options.UseNpgsql(connectionString));
         
+        services.AddDbContext<RestaurantsDbContext>(options => options.UseNpgsql(connectionString));
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
+        services.AddScoped<IDishesRepository, DishesRepository>();
     }
     
 }
