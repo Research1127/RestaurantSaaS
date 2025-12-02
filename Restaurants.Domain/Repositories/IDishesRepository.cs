@@ -6,3 +6,4 @@ public interface IDishesRepository
 {
     Task<IEnumerable<Dish>> GetAllAsync();
 }
+
