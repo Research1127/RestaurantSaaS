@@ -8,3 +8,7 @@ Accept: application/json
 ###
 GET {{Restaurants_Api_HostAddress}}/api/restaurants/1
 Accept: application/json
+
+###
+POST {{Restaurants_Api_HostAddress}}/api/restaurants
+Content-Type: application/json
