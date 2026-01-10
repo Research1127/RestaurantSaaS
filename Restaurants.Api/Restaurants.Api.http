@@ -12,3 +12,7 @@ Accept: application/json
 ###
 POST {{Restaurants_Api_HostAddress}}/api/restaurants
 Content-Type: application/json
+
+###
+PATCH {{Restaurants_Api_HostAddress}}/api/restaurants/4
+Accept: application/json
