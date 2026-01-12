@@ -6,7 +6,8 @@ using Restaurants.Domain.Repositories;
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
 public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandler> logger,
-    IMapper mapper, IRestaurantsRepository restaurantsRepository) : IRequestHandler<UpdateRestaurantCommand,bool>
+    IMapper mapper, 
+    IRestaurantsRepository restaurantsRepository) : IRequestHandler<UpdateRestaurantCommand,bool>
 {
     public async Task<bool> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
     {
