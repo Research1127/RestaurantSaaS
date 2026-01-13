@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
@@ -15,7 +16,7 @@ public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandl
         logger.LogInformation($"Updating restaurant with id : {request.Id}");
         var restaurant = await restaurantsRepository.GetByIdAsync(request.Id);
         if (restaurant is null)
-            throw new NotFoundException($"Restaurant with id {request.Id} doesn't exist");
+            throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
         
         mapper.Map(request, restaurant);
         //restaurant.Name = request.Name;
