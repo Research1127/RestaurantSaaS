@@ -11,3 +11,4 @@ public class CreateDishCommand : IRequest
     public int? KiloCalories { get; set; } // Must validate
     public int RestaurantId { get; set; }
 }
+
