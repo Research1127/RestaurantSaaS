@@ -1,0 +1,116 @@
+# ASP.NET IDENTITY
+
+✅ What is ASP.NET Identity?
+
+ASP.NET Identity is the authentication & authorization system in .NET that handles:
+
+- ✅ User registration 
+- ✅ Login / Logout 
+- ✅ Password hashing & validation 
+- ✅ Roles (Admin, User, etc.)
+- ✅ Claims (extra user info like department, access level)
+- ✅ Account lockout, email confirmation, reset password
+
+Identity Structure (We can inherit):
+- ✅IdentityEndpoints<IdentityUser>
+- ✅UserManager<IdentityUser>
+- ✅UserStore<IdentityUser>
+- ✅IdentityDbContext
+- ✅IdentityUser<base user entity>
+
+In Domain Module, add nuget package called `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
+
+
+### User.cs
+Added new class in `Restaurants.Domain/Entities/User.cs`
+Inherit from IdentityUser
+```csharp
+namespace Restaurants.Domain.Entities;
+
+public class User : IdentityUser
+{
+    
+}
+```
+---
+### RestaurantsDbContext.cs
+Open `RestaurantsDbContext.cs` in Infrastructure module
+- Adjust inheritance instead of inheriting from base class of DbContext, we change to 
+      inherit from IdentityDbContext
+- This DbContext takes generic parameter defining user type for the identity user.
+  So, our DbContext become `IdentityDbContext<User>`
+
+### ServiceCollectionExtensions
+Now to register the interfaces for the user store and user manager types, we have
+   to add some services in our `ServiceCollectionExtensions.cs` in our Infrastructure module
+
+```csharp
+services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<RestaurantsDbContext>()
+```
+This will add endpoint to our API by editing Program.cs and add `app.MapIdentityApi<User>`
+
+This auto-creates endpoints:
+  - POST /register 
+  - POST /login 
+  - POST /refresh 
+  - POST /logout (if using cookies)
+
+So no controller needed 👍
+
+### Program.cs
+Open our Program.cs and add below line (important):
+```csharp
+app.MapIdentityApi<User>();
+```
+---
+### Migration Part
+
+Then we need to create a migration since we have extended our dbContext with the identity table.
+Open package manager console or terminal and run
+
+**Package manager console**
+```shell
+add-migration IdentityAdded
+update-database
+```
+**Terminal**
+```shell
+dotnet ef migrations add IdentityAdded -p ./Restaurants.Infrastructure -s ../Restaurants.Api/Restaurants.Api
+dotnet ef database update -p ./Restaurants.Infrastructure -s ../Restaurants.Api/Restaurants.Api
+```
+
+Now DB will contain:
+   - Your app tables
+   - Identity tables
+
+**Recommended**
+
+Can run the application to test in swagger by register first and then login using similar credential. 
+Note that after register the detail are added into our database table which is AspNetUsers
+
+**Optional**
+
+To test open our Restaurants.API.http 
+   - Create POST method to register and login
+
+### Register
+```http request
+POST {{Restaurants.API.HostAddress}}/register
+Content-Type: application/json
+{
+    "email" : "testuser@test.com",
+    "password" : "Password1!"
+
+```
+
+### Login
+```http request
+POST {{Restaurants.API.HostAddress}}/login
+Content-Type: application/json
+{
+    "email" : "testuser@test.com",
+    "password" : "Password1!"
+
+```
+
+
