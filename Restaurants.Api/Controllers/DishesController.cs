@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Dishes;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using Restaurants.Application.Dishes.Commands;
 using Restaurants.Application.Dishes.Commands.CreateDish;
@@ -15,7 +16,8 @@ using Restaurants.Domain.Entities;
 namespace Restaurants.Api.Controllers;
 
 [ApiController]
-[Route("api/restaurant/{restaurantId}/dishes")] 
+[Route("api/restaurant/{restaurantId}/dishes")]
+[Authorize]
 // Example api/restaurant/5/dishes
 
 public class DishesController(IMediator mediator) : ControllerBase
