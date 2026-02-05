@@ -1,8 +1,11 @@
 @Restaurants_Api_HostAddress = http://localhost:5204
 
+@token = CfDJ8NWx4kvxRyZKrLy7i82zb4GsdCO46JaC7YJfLerYpiZvjmSzDV920OAHk5x6k_tKatSoR0phyM3BL-oG2oT93zJmaUJKwxwxjCBLTWNFYV1prZD5_74L-hV5Q0fTME7rR-EpYyITfiT3PZgsF2KosGKXcW2sF7f_yzu2s5OUDIO9vnr4g4UEByc7DYp_3fD7muT06vlo-NFgMq65g5IWvmbGGUX2nXvoxF9zbo4v0-_o4_-y-LknpowKORRt9u3Vvn6pe7K_7d6FvL0roUQ-X8624OL6FFok9Jr7u2WczuPs_a-XIzuahhO7TyyoVt95C2F084wHdzLcNzyV884kSJL9SW5kvREmOWX1ONe6OTc85XDHdSXPHqjJyKb9XMRZ1i3b1hvRlV3rfo6PVL_OKo9-hHX8zPCLSUVZENotEJfFFtSjF16sFpzftEYEEPh8QYzzVmUi8zlzgaAvwDdS-xiLF3hqeSN6bbnMN-IyA3C7flgA0x8x9ZMUSucK-Wx3LyaLeL8FZejgQeIwnVUVJtgkNKKGNrs2YK4ZI_gzLWHFiNOmXPSgzF-TiSB6cVRPRnK9IwYSoV1pSaAYSKlnSilDYhhv1VIjWTFMI4kfJBvc_9_8uSKP7Qe11ZBY3ZWP7FWL-v-17xRbgxvPorJWWpLAtAoHf-9-QhbqcBaVhcfoemX8NsqsFCv3LDrtt1OAZcIZH65OQYgRMKq6BwJA6FpLORXsilsBlRBPr_5uPmUjyHCstEEE4Jw1xuVShdG0PbW3KseVOuT754kVU8zYIEvAi4tn60qYffkvLegYfAXZ
+
 
 ###
 GET {{Restaurants_Api_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
@@ -16,3 +19,14 @@ Content-Type: application/json
 ###
 PATCH {{Restaurants_Api_HostAddress}}/api/restaurants/4
 Accept: application/json
+
+### ------ Identity ----------
+
+###
+POST {{Restaurants_Api_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+"email" : "testuser2@gmail.com",
+"password" : "Password1!"
+}
