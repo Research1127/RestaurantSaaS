@@ -12,6 +12,7 @@ using Restaurants.Application.Dishes.Queries;
 using Restaurants.Application.Dishes.Queries.GetDishByIdForRestaurant;
 using Restaurants.Application.Dishes.Queries.GetDishesForRestaurant;
 using Restaurants.Domain.Entities;
+using Restaurants.Infrastructure.Authorization;
 
 namespace Restaurants.Api.Controllers;
 
@@ -32,6 +33,7 @@ public class DishesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Policy = PolicyNames.AtLeast20)]
     public async Task<ActionResult<IEnumerable<DishDto>>> GetAllForRestaurant([FromRoute] int restaurantId)
     {
         var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));

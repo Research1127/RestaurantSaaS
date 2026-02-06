@@ -1,6 +1,6 @@
 @Restaurants_Api_HostAddress = http://localhost:5204
 
-@token = CfDJ8NWx4kvxRyZKrLy7i82zb4FX-4jTXX3XmIaIAGIQHiydWkP7r2EZPWkwGtNyi4DhuannygaTX73pSAHeK7Qhe7I_EouCvFj8OX7z9p-_pWYmSKfruRKy85ed5Wz5VJZOblhcm-6PTHiIqRKLWiDzOwP22OKFbCXGQG9OMYyEiy_sbMMgW3-6JXsEuDI1Do4fHGP3ZGz76LykEnc3OS09x70Ufrhu2UdGYax57WgDuJssyFic_yoAUHYs0-et0qIGFgJcUeWvxwE91xL0mmsJb12J_Xne7NMWNiyr840d6P548OAZrgDs4ecTJiyvGG5nJCIty8UxVWtbGl9l7rrUG-labv7fRuymFCeIXjz5PlSTdYuQ00OiTgAIP6hm-VAbseN2ZscE2bqnUB6P5cxlLLBlOrpb14EPlnruPtbTQTfT26H-kTg9-WvEAqktI8vZ-4ZvKy4uzbH82RFIC1nWMH_UQpZQuOBonU_iS2Dw7KPqgBYzRI_ktuy9UHV9acapnOSGMH_VkYpb5xfEWAy-VoSBy-MFNGzmSvJHMo8QzjMXhywlBeAFT3kc9piqRSGznhoqPXfEc2rB5OAjsTLdt4nAHKgRJeZruezh_s2Q9oP9G3U_nTH_7RnjecWuCcsxBTe-tPx0AgO3edWPE5ne9Ht_ksoIPO7ZNK4BUNP8dNsDMiesyuZnPfD3xdgVIA8RvXYUnmC30stanZouudSbqVD7dW5m4hU6oCXRWdXKNl-6d_T-7lodnmrg1NnNPjjuInR-bb1fOce5RXP7JszDoV05UYw2MTu2tliNabAqZMFw
+@token = CfDJ8NWx4kvxRyZKrLy7i82zb4HeD5v4ckzdECBVF_ak0ctRiZJcbrHyvlPe483oe0Q6yMGVnrs4aWc2uYsgj95qkLcMRh6jFczlvmCZf8PYb5QLxjA2dvD0ra0tXqn8F9wOC6_UkHLL-FKWnt-JHmEwxhyUFwMCx1VBu5Dlg334NtRcW9jzZ4wqHz7evLdBkdnsqc_nkP6em66o94cfBWpPc7I1qlcdlMsNC01qaO0URgq02FGaxo6UI-mx8X4uDUobVS8LMlM5Q7bEAJbZ7f4Iua5KKYYibOPl1Y2TXsJJ5oRibReO_pfQbDUMnEwJdvnG-lxtFb-E028_HwQUymQ0OPD8n1WTYUM4qhNpZTirKu3tiy_A31l8_5HB-gPyrwakJOzIkE6bTjhybQcsJVZJl9ccu8m15HRQZLD_XKmt5mg5nW3IBoHodcVFkWvLTUGJX2HORlMsI72jt33Tn8eOg-fBavKdk8gAZpZ-1ShXA4HqYzCzQNyZn5WXug1PcCr3AfMMq7pCvA4_G3FcrCQmRu5dojrUrJgm9OJYgmGixJJ-2JCFdm_F0PV8azm25qrdRY9FPzD4u8TDm8KwvzizF78IszMkDWqpPfCRoWKx-YuLz8RFmei7wH8FmXvh7XymClbudx-nnZOxTSLZ-ciMB7OhMg9QRxPgJbech8h__GX5lJ7493wwQtl2IecNb75nqqJHe6UIVRz6yTpjAKQUTUaJV2dic55xLPowKaoM8pMkrnUNUrS3KdV2h3gBDmJKmLeTRKRLm_lNt90yKOI7qcwfyJ-QQmQ6JgNCUIUGqVQp
 
 ###
 GET {{Restaurants_Api_HostAddress}}/api/restaurants
@@ -8,7 +8,7 @@ Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
-GET {{Restaurants_Api_HostAddress}}/api/restaurants/2
+GET {{Restaurants_Api_HostAddress}}/api/restaurants/1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -21,6 +21,13 @@ Content-Type: application/json
 PATCH {{Restaurants_Api_HostAddress}}/api/restaurants/4
 Accept: application/json
 
+### -------- Dish ----------------
+### 
+
+GET {{Restaurants_Api_HostAddress}}/api/restaurant/1/dishes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
 ### ------ Identity ----------
 
 ###
@@ -28,7 +35,7 @@ POST {{Restaurants_Api_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-"email" : "owner@gmail.com",
+"email" : "testuser2@gmail.com",
 "password" : "Password1!"
 }
 
