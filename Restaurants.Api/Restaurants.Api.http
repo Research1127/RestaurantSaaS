@@ -1,6 +1,6 @@
 @Restaurants_Api_HostAddress = http://localhost:5204
 
-@token = CfDJ8NWx4kvxRyZKrLy7i82zb4HeD5v4ckzdECBVF_ak0ctRiZJcbrHyvlPe483oe0Q6yMGVnrs4aWc2uYsgj95qkLcMRh6jFczlvmCZf8PYb5QLxjA2dvD0ra0tXqn8F9wOC6_UkHLL-FKWnt-JHmEwxhyUFwMCx1VBu5Dlg334NtRcW9jzZ4wqHz7evLdBkdnsqc_nkP6em66o94cfBWpPc7I1qlcdlMsNC01qaO0URgq02FGaxo6UI-mx8X4uDUobVS8LMlM5Q7bEAJbZ7f4Iua5KKYYibOPl1Y2TXsJJ5oRibReO_pfQbDUMnEwJdvnG-lxtFb-E028_HwQUymQ0OPD8n1WTYUM4qhNpZTirKu3tiy_A31l8_5HB-gPyrwakJOzIkE6bTjhybQcsJVZJl9ccu8m15HRQZLD_XKmt5mg5nW3IBoHodcVFkWvLTUGJX2HORlMsI72jt33Tn8eOg-fBavKdk8gAZpZ-1ShXA4HqYzCzQNyZn5WXug1PcCr3AfMMq7pCvA4_G3FcrCQmRu5dojrUrJgm9OJYgmGixJJ-2JCFdm_F0PV8azm25qrdRY9FPzD4u8TDm8KwvzizF78IszMkDWqpPfCRoWKx-YuLz8RFmei7wH8FmXvh7XymClbudx-nnZOxTSLZ-ciMB7OhMg9QRxPgJbech8h__GX5lJ7493wwQtl2IecNb75nqqJHe6UIVRz6yTpjAKQUTUaJV2dic55xLPowKaoM8pMkrnUNUrS3KdV2h3gBDmJKmLeTRKRLm_lNt90yKOI7qcwfyJ-QQmQ6JgNCUIUGqVQp
+@token = CfDJ8NWx4kvxRyZKrLy7i82zb4E2RL7RqyLT_FbqjDXK7Y9qVjYhVHHHT9YuD0mn1YdWHpPK9DqUEF2BVNASfWaWw1sH_FbsT-i80vfzRtF5-g15pLRJ5HjeGHFw1NWmgv7htcZv4DVZX4y4lcF7YqxE2dPSMCYReCBghreofLSdNd_Y38D2w_SCWRsFUOJfUysVgUt-G01AZNcmYOu9ypjld-nF5e75UU5jrvXgp4lNmzsAHxztJtSY0IHD11lUgEH_VzM0CFhYo6ujaHs_6BLTHcT65-VNuK_7jo7lpNeFi0ub95Np1h-_9D3B-xBWTZkTlUEC6rV9ekDKHYiSJAgrB4hYb1VBN_vPg-q7tl-4x5kGCN1vKZPiWYOwZpJpZBG6SvlM898Hfr0efJ3EsTd-vBrxMhE10hVGjiwtetiMWj_Cd9lKr_1m-chhwY6G2BVFn8Q5T7hAWoySrcE45yDEQIH0SI2R5ZfLDYba9yPdpavc3N2lsRdO-W_fZi030T2tSbapH_1BXm0keePhhCgUZRps4ndzyT1g2yB3tbO-1yHCo2n5fCzpBfHRIjJUevlnwpKcarS-thiwdVuXVJ4UPurQI-nFOzR5oTRptCyuFH6IG6SpTvdCMAofOizsAqhdkh3KBqejlP3hG3P8h-5QHIU64xHOoDFRtdRcPh-7ayT9ozBlhrwmwytdTF05yPyElMASH2sQbEZU87CXvaP8d8Yw8MXa4QRah2rYaWb13feyIgbdiStra7bReF25ctcjKmOzWEwtjjCSz8Dx2eJB5pqY80QjJJ7VRmR1yID9fCQY-55UZWX8eBmV8B0ZMFJvIDdoGhlq6mFk6hL0QSBwvSPbs1Gh6ZSfqiA-akeWgZIvkOlyTSNLizh2szLOw0kaTA
 
 ###
 GET {{Restaurants_Api_HostAddress}}/api/restaurants
@@ -16,6 +16,19 @@ Content-Type: application/json
 ###
 POST {{Restaurants_Api_HostAddress}}/api/restaurants
 Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "User Restaurant",
+  "description": "This is test for user resources part",
+  "category": "Malay",
+  "hasDelivery": true,
+  "contactEmail": "info@test.com",
+  "contactNumber": "1234567",
+  "city": "Damansara",
+  "street": "Bukit Bintang",
+  "postalCode": "12345"
+}
 
 ###
 PATCH {{Restaurants_Api_HostAddress}}/api/restaurants/4
@@ -35,7 +48,7 @@ POST {{Restaurants_Api_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-"email" : "testuser2@gmail.com",
+"email" : "user@gmail.com",
 "password" : "Password1!"
 }
 
