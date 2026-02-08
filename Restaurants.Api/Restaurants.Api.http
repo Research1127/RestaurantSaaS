@@ -1,6 +1,6 @@
 @Restaurants_Api_HostAddress = http://localhost:5204
 
-@token = CfDJ8NWx4kvxRyZKrLy7i82zb4GKoxoX4_pxlG6JgeQmMZugMMgTFWueRk2LUDqJMXSdPGy_9ZFad2POm-feNVaQno-DUL5MkNEZGhdmDuKcdSPWgx443b1k8_tk21Nuv-ntkSRg3CBXC9kDfgfXymUd5xNcYpJrVCjINoKHNwUnDjVMlpwuTKyJbjWjdawMhQy5andXXbaMLxPW0vupJ7qVBxrCsFkfVo7QcQGCSDgr2YuiX_uPXyai-Q7gVVVnWK3JDEalF8znvS1JQaZdpmF1mXKJb8XqtIGboXnVWdnvtuqKAI0NDEZ_I-5Ms6eGfTif6jNB4jvzDxKhDITlM1STJDGte8O-vDtmjgj5JvNPu7F5aeiPba9l3i5OP9ABQNyuUCj8qnLe-dQ2LtKz8Gax8FGHcZAi1qvXbfQLAItSevNoOc_ML8286mow5DtFsiIN3D26V1E2bd9JweoLNKSzRU4Y4OpnBD_BXmAH69qrCwawMDryl4G-EGtSFwmrh9EdUCiy1d-vKudNpAAl9z5CQA8ykJQ2MaG_eWn4rceYHLtHSKiroM_raI5NwIIgYOlrd9a_ZXwUi9o4zPz1cciJjOsBCxIJ5og5l3DrKS96eBwvWjmEgtLDGT-QOoHT1qtdp-8h96GcefhRdF1ioAp8IH-O79k8Hfy_WkMWGEB9wL_h83V3JMbfCsUyF_-NF1wuKy7kg82dSLpoRZZAzoXzDejcwi5b_dwf5_T76j2mI1atfjVkEKYn3V4Upo035HZRr9RTFJP212aHDF64KPYAMeXGngK1QhxTDhmSCS5axPAh1HEoRUnFtJi3lx4nzy8Fw8h2TlQY9RyH60Hb0q2y619QncT8OSqi1cgpj9oV9VHo8sMZUFM76_lxaV1fiUv0Zg
+@token = CfDJ8NWx4kvxRyZKrLy7i82zb4EmgeysD76XPAxYuKXyGePyHXn55lttEXXzS6SssUm_xmDv7FsRDgGo3BZFFDqnc1ms0EP2rNiAzpyMkbP9WsKu33grvU_bJcL4Nc-lQoaO9xraBA6bqYDLxYBGS7B1zkox6IvWO2JzAPE8wDFQf49p4IbctxJXr-hTwq18bXK7hpEQtssGx2402IwoZWxiCZpqv49e6Zmyb1BwDH5WE1f5RwmTyf-k3d_w1nU1XKXj6PmXCoCOo0TgaFRH7wTdpaDcjsxx4uELJxh2exp0uXFryWppVXZLp9z32B1LjJRB0lJd_eI8ptIYAkvygNqodp4-InaOKDrTcZ2V3rxVXnD3WaRQzZK09MdkGEaAdP4pjkBGLjkwjWWhZZabotJa2oveypKH4TF6D3wAk3QNXYYmD0tkuE-pwaRARCzX0hR2To-8SXV9Ms7vakwjiPYtZ_4J17lkEQbWAQexeK_fmMFDuB9yZyMsFs8qs2cSA_4eTVPdeTOCcW6VBc-Fo5SDyKXg20EBW9IPNR10O666MQycmp7vfFwXte-kDIRsDZF3RBhAQwRXNjDLl4WzccYLQDsb2F4DX74e9OctNYAzyDg_-sYfnQARCgTVbkIPL67Hp-skFR28_bsXuyj7B5IybuQXA0_cUNfGUxelaOybvBd22CvKMiVKWT7Rrfl8BaNqZVTvTppj67sGp2tsQE5VDjl0E6IaYFwzOu6RYEDOLMthNy6T2yj-VBcdbPNSCw645Sc95uEQJ_7LL3_W92dN2LUieVmO2Ypik3NsbwQOpllN
 
 ### -------- Restaurant ---------------
 
@@ -43,7 +43,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Owner Create",
+  "name": "Owner2 Restaurant2",
   "description": "This is test for user resources part",
   "category": "Malay",
   "hasDelivery": true,
@@ -67,12 +67,21 @@ Content-Type: application/json
 
 ### ------ Identity ----------
 
-###
+### Register User
+POST {{Restaurants_Api_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email" : "owner2@gmail.com",
+  "password" : "Password1!"
+}
+
+### Login User
 POST {{Restaurants_Api_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-"email" : "admin@gmail.com",
+"email" : "owner2@gmail.com",
 "password" : "Password1!"
 }
 
@@ -86,6 +95,17 @@ Content-Type: application/json
 {
   "Nationality" : "Malaysia",
   "DateOfBirth" : "2026-02-04"
+}
+
+
+###
+PATCH {{Restaurants_Api_HostAddress}}/api/identity/userRole
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "userEmail": "owner2@gmail.com",
+  "roleName": "Owner"
 }
 
 
