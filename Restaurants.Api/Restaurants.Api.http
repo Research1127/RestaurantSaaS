@@ -6,7 +6,12 @@
 
 ### Get all restaurants
 GET {{Restaurants_Api_HostAddress}}/api/restaurants
-Authorization: Bearer {{token}}
+//Authorization: Bearer {{token}}
+Accept: application/json
+
+### Get restaurant based on filtering
+GET {{Restaurants_Api_HostAddress}}/api/restaurants?searchPhrase=patch new
+//Authorization: Bearer {{token}}
 Accept: application/json
 
 ### Get restaurant by id
@@ -81,7 +86,7 @@ POST {{Restaurants_Api_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-"email" : "owner2@gmail.com",
+"email" : "owner@gmail.com",
 "password" : "Password1!"
 }
 
