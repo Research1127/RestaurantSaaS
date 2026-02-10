@@ -10,7 +10,7 @@ GET {{Restaurants_Api_HostAddress}}/api/restaurants
 Accept: application/json
 
 ### Get restaurant based on filtering
-GET {{Restaurants_Api_HostAddress}}/api/restaurants?searchPhrase=patch new
+GET {{Restaurants_Api_HostAddress}}/api/restaurants?pageSize=5&pageNumber=2
 //Authorization: Bearer {{token}}
 Accept: application/json
 
