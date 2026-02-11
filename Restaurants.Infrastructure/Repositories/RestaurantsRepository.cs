@@ -14,18 +14,25 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         return restaurants;
     }
     
-    public async Task<IEnumerable<Restaurant>> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+    // Change Task<IEnumerable<Restaurant>> to Task<(IEnumerable<Restaurant>,int)>
+    public async Task<(IEnumerable<Restaurant>,int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var searchPhraseLower = searchPhrase?.ToLower();
         
-        var restaurants = await dbContext.Restaurants
-            .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower) 
-                                                      || r.Description.ToLower().Contains(searchPhraseLower)))
+        // Add Here
+        var baseQuery = dbContext.Restaurants
+            .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
+                                                      || r.Description.ToLower().Contains(searchPhraseLower)));
+        // Add Here
+        var totalCount = await baseQuery.CountAsync();
+            
+        // Change here    
+        var restaurants = await baseQuery
             .Skip(pageSize * (pageNumber - 1))
             .Take(pageSize)
             .ToListAsync();
         
-        return restaurants;
+        return (restaurants,totalCount); // add tuple here
     }
 
     public async Task<Restaurant?> GetByIdAsync(int id)
